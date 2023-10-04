@@ -7,6 +7,7 @@ use visr::equalize;
 fn main() -> Result<()> {
     let file_name = std::env::args().nth(1).expect("No image path provided");
     let image = image::open(file_name).unwrap().to_luma8();
+    image.save("luma.png")?;
 
     let t = Instant::now();
     let equalized = equalize(&image);
